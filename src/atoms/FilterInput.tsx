@@ -10,7 +10,7 @@ export default function FilterInput({ placeholder }: IFilterInputProps) {
 const FInput = styled.input`
   width: 100%;
   height: ${(props) => props.theme.height.input};
-  background: #ffffff;
+  background-color: #ffffff;
   padding: 10px 20px 10px 20px;
   border-radius: 8px;
   border: 1px solid ${(props) => props.theme.colors.borderGray};

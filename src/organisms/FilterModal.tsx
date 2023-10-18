@@ -26,7 +26,7 @@ export default function FilterModal({ btnText }: IBtnTextProps) {
 const FModal = styled.div`
   width: 335px;
   height: ${(props) => props.theme.height.modal};
-  background: #ffffff;
+  background-color: #ffffff;
   border-radius: 16px;
   display: flex;
   flex-direction: column;

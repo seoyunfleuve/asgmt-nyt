@@ -18,5 +18,5 @@ export const countryFilterDefault = css`
 export const countryFilterActive = css`
   color: #ffffff;
   border: 1px solid ${(props) => props.theme.colors.borderLightGray};
-  background: ${(props) => props.theme.colors.subBlue};
+  background-color: ${(props) => props.theme.colors.subBlue};
 `;
