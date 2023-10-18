@@ -1,20 +1,16 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
 import NotFound from './pages/NotFound';
-import Home from './pages/Home';
-import Scrap from './pages/Scrap';
+import ArticleList from './organisms/content/ArticleList';
+import HomeScrap from './pages/HomeScrap';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <NotFound />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: '/scrap', element: <Scrap /> },
-    ],
-  },
-]);
+const createRoute = (path: string) => ({
+  path,
+  element: <HomeScrap />,
+  errorElement: <NotFound />,
+  children: [{ index: true, element: <ArticleList /> }],
+});
+
+const router = createBrowserRouter([createRoute('/'), createRoute('/scrap')]);
 
 export default router;
