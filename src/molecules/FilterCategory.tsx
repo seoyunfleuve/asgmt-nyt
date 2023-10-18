@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { subtitleFont } from '../styles/Font.style';
 import FilterInput from '../atoms/FilterInput';
-import { IFilterCategoryProps } from '../type/type';
+import { IFilterCategoryProps } from '../type/Filter.type';
 import FilterTab from './FilterTab';
 
 export default function FilterCategory({

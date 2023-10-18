@@ -6,7 +6,7 @@ import {
   headerFilterActive,
   headerFilterDefault,
 } from '../../styles/Filter.style';
-import { IFilterProps } from '../../type/type';
+import { IFilterProps } from '../../type/Filter.type';
 
 export default function FilterBtn({ type, btnText }: IFilterProps) {
   const [isActive, setIsActive] = useState(true);

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IFilterProps } from '../type/type';
+import { IFilterProps } from '../type/Filter.type';
 import FilterBtn from '../atoms/button/FilterBtn';
 
 export default function FilterTab({ type }: IFilterProps) {

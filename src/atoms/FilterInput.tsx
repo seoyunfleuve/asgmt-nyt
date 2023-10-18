@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IFilterInputProps } from '../type/type';
+import { IFilterInputProps } from '../type/Filter.type';
 import { innerFont } from '../styles/Font.style';
 
 export default function FilterInput({ placeholder }: IFilterInputProps) {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ActionBtn from '../atoms/button/ActionBtn';
 import FilterCategory from '../molecules/FilterCategory';
-import { IBtnTextProps } from '../type/type';
+import { IBtnTextProps } from '../type/Filter.type';
 
 export default function FilterModal({ btnText }: IBtnTextProps) {
   return (
