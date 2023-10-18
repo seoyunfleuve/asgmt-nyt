@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './organisms/Header';
-import NavBar from './components/NavBar';
+import NavBar from './organisms/NavBar';
 import MobileView from './templates/MobileView';
 
 function App() {
