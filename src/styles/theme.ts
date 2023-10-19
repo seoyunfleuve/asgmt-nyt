@@ -10,10 +10,13 @@ const colors = {
 };
 
 const height = {
-  headerHeight: '60px',
-  filterHeight: '34px',
-  navHeight: '85px',
-  cardHeight: '104px',
+  header: '60px',
+  filter: '34px',
+  nav: '85px',
+  card: '104px',
+  actionBtn: '60px',
+  modal: '480px',
+  input: '44px',
 };
 
 const theme: DefaultTheme = {
