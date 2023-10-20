@@ -1,16 +1,17 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/NotFound';
-import ArticleList from './organisms/content/ArticleList';
-import HomeScrap from './pages/HomeScrap';
+
 import ArticleFilter from './pages/ArticleFilter';
+import App from './App';
+import HomeScrap from './pages/HomeScrap';
 
 const createRoute = (path: string) => ({
   path,
-  element: <HomeScrap />,
+  element: <App />,
   errorElement: <NotFound />,
   children: [
-    { index: true, element: <ArticleList /> },
+    { index: true, element: <HomeScrap /> },
     { path: 'filter', element: <ArticleFilter /> },
   ],
 });
