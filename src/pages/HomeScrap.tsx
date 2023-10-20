@@ -1,6 +1,10 @@
 import React from 'react';
-import AppLayout from '../templates/AppLayout';
+import ArticleList from '../templates/ArticleList';
+import { useGetNytArticle } from '../api/articleSearchAPI';
 
 export default function HomeScrap() {
-  return <AppLayout />;
+  const { data } = useGetNytArticle();
+  const articleArr = data?.response.docs || [];
+
+  return <ArticleList articleArr={articleArr} />;
 }

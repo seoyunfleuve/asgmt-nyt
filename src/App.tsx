@@ -1,10 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../organisms/Header';
-import NavBar from '../organisms/NavBar';
-import { ContentContainer, MobileViewContainer } from '../atoms/Container';
+import Header from './organisms/Header';
+import NavBar from './organisms/NavBar';
+import { ContentContainer, MobileViewContainer } from './atoms/Container';
 
-function AppLayout() {
+function App() {
   return (
     <MobileViewContainer>
       <Header />
@@ -16,4 +16,4 @@ function AppLayout() {
   );
 }
 
-export default AppLayout;
+export default App;
