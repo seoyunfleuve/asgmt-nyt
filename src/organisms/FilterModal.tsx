@@ -2,38 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import ActionBtn from '../atoms/button/ActionBtn';
 import FilterCategory from '../molecules/FilterCategory';
-import { IBtnTextProps } from '../type/Filter.type';
+import { IFilterCategory, IFilterModalProps } from '../type/Filter.type';
+import { ModalContainer } from '../atoms/Container';
+import { subtitleFont } from '../styles/Font.style';
 
-export default function FilterModal({ btnText }: IBtnTextProps) {
+export default function FilterModal({
+  category,
+  btnText,
+  onClick,
+  filterStore,
+  isModal,
+}: IFilterModalProps) {
   return (
-    <FModal>
-      <FilterCategory
-        title="헤드라인"
-        placeholder="검색하실 헤드라인을 입력해 주세요."
-        isInput
-      />
-      <FilterCategory
-        title="날짜"
-        placeholder="날짜를 선택해 주세요."
-        isInput
-      />
-      <FilterCategory title="국가" isInput={false} />
-      <ActionBtn btnText={btnText} />
-    </FModal>
+    <ModalContainer>
+      {category.map((el: IFilterCategory) => {
+        return (
+          <FilterCategory
+            key={el.id}
+            element={el}
+            filterStore={filterStore}
+            isModal={isModal}
+          />
+        );
+      })}
+      <ActionBtn btnText={btnText} onClick={onClick} />
+    </ModalContainer>
   );
 }
 
-const FModal = styled.div`
-  width: 335px;
-  height: ${(props) => props.theme.height.modal};
-  background-color: #ffffff;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 40px;
-  position: absolute;
-  top: calc((100vh - ${(props) => props.theme.height.modal}) / 2);
-  left: 50%;
-  transform: translate(-50%);
+const FilterTitle = styled.p`
+  ${subtitleFont}
 `;
