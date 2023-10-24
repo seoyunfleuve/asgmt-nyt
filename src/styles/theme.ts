@@ -11,7 +11,7 @@ const colors = {
 
 const height = {
   header: '60px',
-  filter: '34px',
+  roundBtn: '34px',
   nav: '85px',
   card: '104px',
   actionBtn: '60px',

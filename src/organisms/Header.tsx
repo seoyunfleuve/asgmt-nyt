@@ -7,7 +7,6 @@ import ArticleFilter from '../pages/ArticleFilter';
 
 import useAppliedArticleFilterStore from '../store/useAppliedArticleFilterStore';
 import useArticleFilterStore from '../store/useArticleFilterStore';
-import { ISubfilter } from '../type/Filter.type';
 
 export default function Header() {
   const { isToggle: isFilterToggle } = useArticleFilterState();

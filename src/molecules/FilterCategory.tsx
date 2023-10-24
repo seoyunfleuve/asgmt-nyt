@@ -40,7 +40,6 @@ export default function FilterCategory({
       | ((newValue: string) => void)
       | ((newValue: ISubfilter) => void);
   }
-  console.log('current', filterStore);
 
   return (
     <FilterContainer>
