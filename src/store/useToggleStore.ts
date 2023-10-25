@@ -16,3 +16,5 @@ const createIsToggleStore = () =>
 export const useModalState = createIsToggleStore();
 
 export const useArticleFilterState = createIsToggleStore();
+
+export const useToastState = createIsToggleStore();

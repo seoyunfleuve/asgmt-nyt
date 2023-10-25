@@ -8,7 +8,6 @@ export const MobileViewContainer = styled.div`
   max-width: 540px;
   height: 100vh;
   margin: 0 auto;
-  border: 1px solid black;
   position: relative;
 `;
 
@@ -17,7 +16,6 @@ export const ContentContainer = styled.section`
   height: calc(100vh - ${(props) => props.theme.height.header});
   padding: 5%;
   background-color: ${(props) => props.theme.colors.bgGray};
-  border: 1px solid black;
   overflow: scroll;
 `;
 

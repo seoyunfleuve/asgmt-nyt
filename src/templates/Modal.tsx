@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ModalBackground } from '../atoms/Container';
-import { useModalState } from '../store/toggleStore';
+import { useModalState } from '../store/useToggleStore';
 import useModalStore from '../store/useModalStore';
 
 export default function Modal() {
