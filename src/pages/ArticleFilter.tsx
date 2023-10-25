@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterModal from '../organisms/FilterModal';
-import { useArticleFilterState, useModalState } from '../store/toggleStore';
+import { useArticleFilterState, useModalState } from '../store/useToggleStore';
 import useArticleFilterStore from '../store/useArticleFilterStore';
 import useAppliedArticleFilterStore from '../store/useAppliedArticleFilterStore';
 
