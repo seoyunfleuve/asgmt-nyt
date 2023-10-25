@@ -13,24 +13,19 @@ interface IMeta {
   time: string;
 }
 
-export interface IArticle {
+export interface IArticle extends IArticleCardProps {
   abstract: string;
-  byline: IByline;
   document_type: string; // "article"
-  headline: IHeadline;
   keywords: IKeywords[];
   lead_paragraph: string;
   multimedia: IMultimedia[];
   news_desk: string; // 'OpEd'
   print_page: number;
   print_section: string;
-  pub_date: string; // '2023-10-19T23:00:08+0000'
   section_name: string; // 'Opinion'
   snippet: string;
-  source: string; // 'The New York Times'
   type_of_material: string; // 'Op-Ed'
   uri: string; // 'nyt://article/950fb94b-67b8-5103-9dce-35298c223da6'
-  web_url: string;
   word_count: number;
   _id: string; // 'nyt://article/950fb94b-67b8-5103-9dce-35298c223da6';
 }
@@ -79,10 +74,10 @@ interface IMultimedia {
 export interface IArticleCardProps extends ICaptionDateProps {
   byline: IByline;
   headline: IHeadline;
-  source: string;
-  url: string;
+  source: string; // 'The New York Times'
+  web_url: string;
 }
 
 export interface ICaptionDateProps {
-  pubDate: string;
+  pub_date: string; // '2023-10-19T23:00:08+0000'
 }
