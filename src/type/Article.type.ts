@@ -16,7 +16,6 @@ interface IMeta {
 export interface IArticle extends IArticleCardProps {
   abstract: string;
   document_type: string; // "article"
-  keywords: IKeywords[];
   lead_paragraph: string;
   multimedia: IMultimedia[];
   news_desk: string; // 'OpEd'
@@ -53,6 +52,8 @@ interface IKeywords {
   value: string; // 'Social Media'
 }
 
+// {name: 'glocations', value: 'United States', rank: 1, major: 'N'}
+
 interface IMultimedia {
   caption: string | null;
   credit: string | null;
@@ -68,7 +69,7 @@ interface IMultimedia {
   subtype: string;
   type: string;
   url: string;
-  width: 600;
+  width: number;
 }
 
 export interface IArticleCardProps extends ICaptionDateProps {
@@ -76,6 +77,7 @@ export interface IArticleCardProps extends ICaptionDateProps {
   headline: IHeadline;
   source: string; // 'The New York Times'
   web_url: string;
+  keywords: IKeywords[];
 }
 
 export interface ICaptionDateProps {

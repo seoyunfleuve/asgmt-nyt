@@ -19,6 +19,7 @@ export default function ArticleList({
             source={el.source}
             pub_date={el.pub_date}
             web_url={el.web_url}
+            keywords={el.keywords}
           />
         );
       })}

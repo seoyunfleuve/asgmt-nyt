@@ -12,6 +12,11 @@ export default function CaptionDate({ pub_date }: ICaptionDateProps) {
   return <CaptionDateText>{date}</CaptionDateText>;
 }
 export const CaptionDateText = styled.p`
+  min-width: 95px;
   ${captionFont}
-  color: ${(props) => props.theme.colors.fontGray}
+  display: flex;
+  white-space: nowrap;
+  flex-direction: column;
+  align-items: end;
+  color: ${(props) => props.theme.colors.fontGray};
 `;
