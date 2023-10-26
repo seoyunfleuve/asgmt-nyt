@@ -5,21 +5,46 @@ import {
   roundBtnStyle,
   roundBtnStyleDefault,
 } from '../../styles/Button.style';
-import { IBtnProps } from '../../type/Button.type';
 
-export default function TabBtn({ btnText, isActive, onClick }: IBtnProps) {
+import { IBtnProps } from '../../type/Button.type';
+import { innerFont } from '../../styles/Font.style';
+
+export default function TabBtn({
+  id,
+  btnText,
+  isActive,
+  onClick,
+  icon,
+}: IBtnProps) {
+  const Icon = icon?.find((item) => item.id === id)?.icon;
+
   return (
     <TBtn isActive={isActive} onClick={onClick}>
+      {Icon}
       {btnText}
     </TBtn>
   );
 }
 
 const TBtn = styled.button<IBtnProps>`
-  height: ${(props) => props.theme.height.roundBtn};
-  padding: 6px 12px 4px 12px;
+  padding: 0 12px;
   ${roundBtnStyle}
-  ${(props) => (props.isActive ? roundBtnStyleActive : roundBtnStyleDefault)}
+  ${(props) => (props.isActive ? roundBtnStyleActive : roundBtnStyleDefault)};
+  display: flex;
+  align-items: center;
+  ${innerFont}
+  line-height: ${(props) => props.theme.height.roundBtn};
+
+  :first-child {
+    width: 16px;
+    line-height: ${(props) => props.theme.height.roundBtn};
+    margin-right: 4px;
+    fill: ${(props) =>
+      props.isActive
+        ? props.theme.colors.pointBlue
+        : props.theme.colors.fontGray};
+    vertical-align: top;
+  }
 
   &:hover {
     cursor: pointer;
