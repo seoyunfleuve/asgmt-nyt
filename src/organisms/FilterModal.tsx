@@ -1,10 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import ActionBtn from '../atoms/button/ActionBtn';
 import FilterCategory from '../molecules/FilterCategory';
 import { IFilterCategory, IFilterModalProps } from '../type/Filter.type';
 import { ModalContainer } from '../atoms/Container';
-import { subtitleFont } from '../styles/Font.style';
 
 export default function FilterModal({
   category,
@@ -29,7 +27,3 @@ export default function FilterModal({
     </ModalContainer>
   );
 }
-
-const FilterTitle = styled.p`
-  ${subtitleFont}
-`;
