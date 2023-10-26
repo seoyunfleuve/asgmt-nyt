@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { ICurrentFilter, IFilter, ISubfilter } from '../type/Filter.type';
+import isWhitespace from '../utils/isWhitespace';
 
 export interface IArticleFilter extends ICurrentFilter {
   currentArticleFilter: IFilter[];
@@ -20,12 +21,8 @@ const currentInitialFilter = [
   { id: 3, title: 'country', placeholder: '', subfilter: [] },
 ];
 
-const whitespacePattern = /^\s*$/;
-const isWhitespace = (text: string) => {
-  return whitespacePattern.test(text);
-};
-
 const useArticleFilterStore = create<IArticleFilter>((set) => ({
+  initialFilter: currentInitialFilter,
   currentArticleFilter: currentInitialFilter,
   setHeadlineFilter: (newValue: string) => {
     set((state) => {
@@ -34,7 +31,9 @@ const useArticleFilterStore = create<IArticleFilter>((set) => ({
         currentArticleFilter: [
           {
             ...state.currentArticleFilter[0],
-            placeholder: isWhitespace(newValue) ? '' : newValue,
+            placeholder: isWhitespace(newValue)
+              ? currentInitialFilter[0].placeholder
+              : newValue,
           },
           ...state.currentArticleFilter.slice(1),
         ],
@@ -49,7 +48,9 @@ const useArticleFilterStore = create<IArticleFilter>((set) => ({
           ...state.currentArticleFilter.slice(0, 1),
           {
             ...state.currentArticleFilter[1],
-            placeholder: isWhitespace(newValue) ? '' : newValue,
+            placeholder: isWhitespace(newValue)
+              ? currentInitialFilter[1].placeholder
+              : newValue,
           },
           ...state.currentArticleFilter.slice(2),
         ],
@@ -84,35 +85,16 @@ const useArticleFilterStore = create<IArticleFilter>((set) => ({
       };
     });
   },
-  //   set((state) => {
-  //     const updatedState = { ...state };
-  //     const updatedSubfilter =
-  //       updatedState.currentArticleFilter[2].subfilter?.slice();
-
-  //     const index = updatedSubfilter?.findIndex(
-  //       (item) => item?.id === newValue.id
-  //     );
-
-  //     if (index !== undefined && index !== -1) {
-  //       updatedSubfilter?.splice(index, 1);
-  //     } else {
-  //       updatedSubfilter?.push(newValue);
-  //     }
-
-  //     updatedState.currentArticleFilter[2].subfilter = updatedSubfilter;
-  //     return { ...state };
-  //   });
-  // },
   setCurrentArticleFilter: (newValue: IFilter[]) => {
     set(() => {
       return {
-        newValue,
+        currentArticleFilter: newValue,
       };
     });
   },
   clearCurrentArticleFilter: () => {
     set(() => {
-      return { currentInitialFilter };
+      return { currentArticleFilter: currentInitialFilter };
     });
   },
 }));
