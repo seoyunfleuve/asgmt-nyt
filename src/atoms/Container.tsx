@@ -14,7 +14,7 @@ export const MobileViewContainer = styled.div`
 export const ContentContainer = styled.section`
   width: 100%;
   height: calc(100vh - ${(props) => props.theme.height.header});
-  padding: 5%;
+  padding: 5% 5% calc(5% + ${(props) => props.theme.height.nav}) 5%;
   background-color: ${(props) => props.theme.colors.bgGray};
   overflow: scroll;
 `;

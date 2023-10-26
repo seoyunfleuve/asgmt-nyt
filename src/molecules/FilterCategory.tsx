@@ -15,20 +15,17 @@ export default function FilterCategory({
 
   let currentPlaceholder = placeholder;
   let activeSubfilter;
-  let currentFilter;
   let setFilter;
 
   if (isModal && filterStore) {
-    const filterKey = Object.keys(filterStore).filter((key) =>
+    const currentFilterKey = Object.keys(filterStore).filter((key) =>
       key.startsWith('current')
     );
-    currentFilter = filterStore[filterKey[0]] as IFilter[];
+    const currentFilter = filterStore[currentFilterKey[0]] as IFilter[];
 
     const index = currentFilter.findIndex((item: IFilter) => item.id === id);
-    if (index !== -1) {
-      currentPlaceholder = currentFilter[index].placeholder;
-      activeSubfilter = currentFilter[index].subfilter;
-    }
+    currentPlaceholder = currentFilter[index].placeholder;
+    activeSubfilter = currentFilter[index].subfilter;
   }
 
   if (filterStore) {

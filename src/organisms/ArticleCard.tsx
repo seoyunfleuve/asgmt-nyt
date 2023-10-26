@@ -17,6 +17,7 @@ export default function ArticleCard({
   source,
   pub_date,
   web_url,
+  keywords,
 }: IArticleCardProps) {
   const [isScrap, setIsScrap] = useState<boolean>(false);
   const { scrapData, setScrapData } = useScrapDataStore();
@@ -44,6 +45,7 @@ export default function ArticleCard({
       pub_date,
       web_url,
       isScrap,
+      keywords,
     };
 
     let updatedScrapData;
@@ -106,10 +108,18 @@ const ArticleScrapBtn = styled.div`
 `;
 
 const CaptionLeft = styled.div`
+  max-width: calc(90% - 95px);
   display: flex;
   gap: 8px;
+
+  :first-child {
+    min-width: 101px;
+  }
 `;
 
 export const CaptionText = styled.p`
   ${captionFont}
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;

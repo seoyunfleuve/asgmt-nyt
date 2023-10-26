@@ -17,20 +17,23 @@ const appliedInitialFilter = [
   { id: 3, title: 'country', placeholder: '', subfilter: [] },
 ];
 
-const useAppliedArticleFilterStore = create<IApplyFilter>((set) => ({
-  appliedArticleFilter: appliedInitialFilter,
-  setAppliedArticleFilter: (newValue: IFilter[]) => {
-    set((state) => {
-      const updatedState = { ...state };
-      updatedState.appliedArticleFilter = newValue;
-      return updatedState;
-    });
-  },
-  clearAppliedArticleFilter: () => {
-    set(() => {
-      return { appliedArticleFilter: [] };
-    });
-  },
-}));
+const createAppliedArticleFilterStore = () =>
+  create<IApplyFilter>((set) => ({
+    appliedArticleFilter: appliedInitialFilter,
+    setAppliedArticleFilter: (newValue: IFilter[]) => {
+      set((state) => {
+        return {
+          appliedArticleFilter: newValue,
+        };
+      });
+    },
+    clearAppliedArticleFilter: () => {
+      set(() => {
+        return { appliedArticleFilter: appliedInitialFilter };
+      });
+    },
+  }));
 
-export default useAppliedArticleFilterStore;
+export const useAppliedArticleFilterStore = createAppliedArticleFilterStore();
+
+export const useScrapArticleFilterStore = createAppliedArticleFilterStore();

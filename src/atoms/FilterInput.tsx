@@ -39,5 +39,9 @@ const FInput = styled.input.attrs((props) => ({
   &:focus {
     outline: none;
     border: 1.5px solid ${(props) => props.theme.colors.pointBlue};
+
+    &::placeholder {
+      color: transparent;
+    }
   }
 `;
