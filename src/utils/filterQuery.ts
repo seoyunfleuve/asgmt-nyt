@@ -1,6 +1,5 @@
-import React from 'react';
-import { COUNTRY_FILTER_LIST } from '../pages/ArticleFilter';
-import useAppliedArticleFilterStore from '../store/useAppliedArticleFilterStore';
+import { ARTICLE_FILTER_CATEGORY, COUNTRY_FILTER_LIST } from '../constant/list';
+import { useAppliedArticleFilterStore } from '../store/useAppliedArticleFilterStore';
 
 export default function filterQuery() {
   const { appliedArticleFilter } = useAppliedArticleFilterStore();
@@ -25,16 +24,18 @@ export default function filterQuery() {
 
   if (
     filteredHeadline &&
-    filteredHeadline !== '검색하실 헤드라인을 입력해주세요.'
+    filteredHeadline !== ARTICLE_FILTER_CATEGORY[0].placeholder
   ) {
     filterQueryArr.push(`headline:("${filteredHeadline}")`);
   }
-  if (filteredDate && filteredDate !== '날짜를 선택해주세요.') {
+  if (filteredDate && filteredDate !== ARTICLE_FILTER_CATEGORY[1].placeholder) {
     filterQueryArr.push(`pub_date:("${filteredDate}")`);
   }
-  filterQueryArr.push(`(${glocations})`);
-
-  const filterQueryString = `fq=${filterQueryArr.join(' AND ')}`;
+  if (glocations) {
+    filterQueryArr.push(`(${glocations})`);
+  }
+  const filterQueryString =
+    filterQueryArr.length > 0 ? `fq=${filterQueryArr.join(' AND ')}` : '';
 
   return filterQueryString;
 }
