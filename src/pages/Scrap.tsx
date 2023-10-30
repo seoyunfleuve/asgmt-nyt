@@ -10,6 +10,7 @@ import {
 } from '../store/useAppliedArticleFilterStore';
 import { IArticleCardProps } from '../type/Article.type';
 import scrapFilter from '../utils/scrapFilter';
+import { ArticleContainer } from '../atoms/Container';
 
 export default function Scrap() {
   const [data, setData] = useState<IArticleCardProps[]>([]);
@@ -44,7 +45,9 @@ export default function Scrap() {
   }, [scrapArticleFilter]);
 
   return articleArr.length > 0 ? (
-    <ArticleList articleArr={articleArr} />
+    <ArticleContainer>
+      <ArticleList articleArr={articleArr} />
+    </ArticleContainer>
   ) : (
     <NoData text="저장된 스크랩이 없습니다." />
   );
