@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import App from './App';
-import HomeScrap from './pages/Home';
+import Home from './pages/Home';
 import Scrap from './pages/Scrap';
 
 const router = createBrowserRouter([
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <HomeScrap /> },
+      { index: true, element: <Home /> },
       { path: 'scrap', element: <Scrap /> },
     ],
   },
