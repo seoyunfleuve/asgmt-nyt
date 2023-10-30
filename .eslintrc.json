@@ -30,7 +30,10 @@
     ],
     "no-use-before-define": "off",
     "no-unused-vars": "off",
-    "camelcase":"off"
+    "camelcase":"off",
+    "react/no-array-index-key": "off",
+    "consistent-return": "off",
+    "no-undef": "off"
   },
   "settings": {
     "import/resolver": {
