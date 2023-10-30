@@ -1,34 +1,36 @@
-import { useQuery } from '@tanstack/react-query';
-import { IArticleSearchRes } from '../type/Article.type';
-import { IFilter } from '../type/Filter.type';
-import filterQuery from '../atoms/FilterQuery';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import filterQuery from '../utils/filterQuery';
 
 const url = process.env.REACT_APP_ARTICLE_SEARCH_API;
 const key = process.env.REACT_APP_API_KEY;
 
-export const getNytArticle = async () => {
-  const response = await (await fetch(`${url}?&api-key=${key}`)).json();
-  return response;
-};
+export const getNytArticle = async (
+  pageParam: any,
+  filterQueryString: string
+) => {
+  const response = await fetch(
+    `${url}?${filterQueryString}&page=${pageParam}&api-key=${key}`
+  );
 
-export const getFilteredArticle = async (filterQueryString: string) => {
-  const response = await (
-    await fetch(`${url}?${filterQueryString}&api-key=${key}`)
-  ).json();
-  return response;
+  if (!response.ok) {
+    return undefined;
+  }
+
+  const data = await response.json();
+  return data;
 };
 
 export const useGetNytArticle = () => {
-  return useQuery<IArticleSearchRes>({
-    queryKey: ['nytArticle'],
-    queryFn: getNytArticle,
-  });
-};
-
-export const useGetFilteredArticle = (appliedArticleFilter: IFilter[]) => {
   const filterQueryString = filterQuery();
-  return useQuery<IArticleSearchRes>({
-    queryKey: ['filteredArticle', appliedArticleFilter],
-    queryFn: () => getFilteredArticle(filterQueryString),
+  return useInfiniteQuery({
+    queryKey: ['nytArticle'],
+    queryFn: ({ pageParam }) => getNytArticle(pageParam, filterQueryString),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+      if (!!lastPage && lastPageParam < 10) {
+        return lastPageParam + 1;
+      }
+      return undefined;
+    },
   });
 };
