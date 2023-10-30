@@ -19,10 +19,20 @@ export const ContentContainer = styled.section`
   overflow: scroll;
 `;
 
-export const ArticleListContainer = styled.article`
+const articleContainerStyle = `
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
+`;
+
+export const ArticleContainer = styled.article`
+  ${articleContainerStyle}
+`;
+
+export const ArticleListContainer = styled.div`
+  ${articleContainerStyle}
+  width: 100%;
 `;
 
 export const CardContainer = styled.div`
