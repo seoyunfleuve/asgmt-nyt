@@ -1,3 +1,8 @@
+export interface IArticleRes {
+  pageParams: number[];
+  pages: IArticleSearchRes[];
+}
+
 export interface IArticleSearchRes {
   copyright: string;
   response: {
@@ -51,8 +56,6 @@ interface IKeywords {
   rank: number;
   value: string; // 'Social Media'
 }
-
-// {name: 'glocations', value: 'United States', rank: 1, major: 'N'}
 
 interface IMultimedia {
   caption: string | null;
